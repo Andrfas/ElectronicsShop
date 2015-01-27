@@ -121,7 +121,7 @@
       <classes dir="WEB-INF/classes"/>
       <!--<fileset dir="WEB-INF"/>-->
       <lib dir="WEB-INF/lib"/>
-      <fileset dir="WEB-INF" includes="*.jsp"/>
+      <zipfileset dir="WEB-INF/view" prefix="view"/>
     </war>
   </target>
 
