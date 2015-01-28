@@ -93,11 +93,11 @@
   <!-- Project Libraries -->
 
   <path id="library.javax.servlet-api-3.1.0.classpath">
-    <pathelement location="WEB-INF/lib/javax.servlet-api-3.1.0.jar"/>
+    <pathelement location="web/WEB-INF/lib/javax.servlet-api-3.1.0.jar"/>
   </path>
 
   <path id="library.mysql-connector-java-5.0.8-bin.classpath">
-    <pathelement location="WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
+    <pathelement location="web/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
   </path>
 
 
@@ -106,7 +106,7 @@
 
 
   <target name="compile">
-    <javac includeantruntime="false" srcdir="src" destdir="WEB-INF/classes" debug="true">
+    <javac includeantruntime="false" srcdir="src" destdir="web/WEB-INF/classes" debug="true">
       <classpath refid="jdk.classpath.1.7"/>
       <classpath refid="library.javax.servlet-api-3.1.0.classpath"/>
       <classpath refid="library.mysql-connector-java-5.0.8-bin.classpath"/>
@@ -117,11 +117,12 @@
 
 <!--${project.jdk.classpath}-->
   <target name="makeWAR" depends="compile">
-    <war destfile="electronicsShop.war" webxml="WEB-INF/web.xml">
-      <classes dir="WEB-INF/classes"/>
+    <war destfile="electronicsShop.war" webxml="web/WEB-INF/web.xml">
+      <classes dir="web/WEB-INF/classes"/>
       <!--<fileset dir="WEB-INF"/>-->
-      <lib dir="WEB-INF/lib"/>
-      <zipfileset dir="WEB-INF/view" prefix="view"/>
+      <lib dir="web/WEB-INF/lib"/>
+      <zipfileset dir="web/WEB-INF/view" prefix="view"/>
+      <fileset dir="web/WEB-INF" includes="*.jsp" />
     </war>
   </target>
 

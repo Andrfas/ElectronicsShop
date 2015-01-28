@@ -13,13 +13,13 @@ import java.io.IOException;
 /**
  * Created by Andrey on 25.01.2015.
  */
-@WebServlet("/")
+//@WebServlet("/")
 public class mainPage extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) {
         req.setAttribute("goodsArr", GoodsDB.getGoods(0, 10));
-        RequestDispatcher reqD = req.getRequestDispatcher("mainPage.jsp");
+        RequestDispatcher reqD = req.getRequestDispatcher("/index.jsp");
 
         try {
             reqD.forward(req, resp);
@@ -28,6 +28,11 @@ public class mainPage extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) {
+
     }
 
 }
