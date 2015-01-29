@@ -39,4 +39,19 @@ public class GoodsDB {
         }
         return goodsArr;
     }
+
+    public static Good getGoodById(int id) {
+        Statement statement = DBConnection.getStatement();
+        ResultSet set = null;
+        try {
+            set = statement.executeQuery("SELECT * FROM goods WHERE id="+id);
+
+            set.next();
+
+            return new Good(set.getInt("id"), set.getString("name"), set.getInt("price"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
